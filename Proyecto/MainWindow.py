@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+import sys
+
+from PyQt5 import QtCore, QtGui, uic, QtWidgets
+from PyQt5.QtGui import QIcon, QRegion
+from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtWidgets import QApplication, QPlainTextEdit, QGraphicsOpacityEffect, QFileDialog
+form_class = uic.loadUiType("MainWindow.ui")[0]
+
+class MainWindow(QtWidgets.QMainWindow, form_class):
+    def __init__(self,parent=None):
+        super(MainWindow, self).__init__()
+        QtWidgets.QMainWindow.__init__(self, parent)
+        #Importando el archivo .css
+        with open("MainWindow.css") as f:
+            self.setStyleSheet(f.read())
+        self.setupUi(self)
+        self.content = ""
+        #Lo que va a aparecer en cada QPlianText cuando esté vacío
+        self.characters.setPlaceholderText("Ingrese vértices, aristas y caracteristicas")
+        self.root_node.setPlaceholderText("Nodo Origen")
+        self.last_node.setPlaceholderText("Nodo Destino")
+        self.load_file.clicked.connect(self.loadFile)
+        self.setFocus()
+
+    def loadFile(self):#Funcion para abrir la ventana de busqueda y cargar un archivo
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"Seleccione un Archivo", "","Todos los Archivos (*);;Archivos de Texto Plano (*.txt)", options=options)
+        if fileName:
+            f = open(fileName,"r")
+            content = f.read()
+            self.characters.setPlainText(content)
+            self.content = content
+            #print(self.content)
+            #print("-"*40)           
+
+aplicacion = QApplication(sys.argv)
+ventana = MainWindow()
+ventana.show()
+    
+sys.exit(aplicacion.exec_())        
