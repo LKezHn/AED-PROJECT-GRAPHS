@@ -1,0 +1,25 @@
+
+QMainWindow{
+    background-color: whitesmoke;
+}
+
+QPushButton{
+    background-color: lightgray; 
+    border: 1.5px solid gray; 
+    border-radius: 10px;
+    padding: 0px 3px 0px 3px;
+}
+
+QPushButton:focus{
+    outline: none;
+}
+
+QPushButton:hover{
+    background-color: slategray;
+    border-color: black;
+    color: white;
+}
+
+QPlainTextEdit{
+    border: 1px solid black;
+}
