@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
-
+from ChildWindow import *
 from PyQt5 import QtCore, QtGui, uic, QtWidgets
 from PyQt5.QtGui import QIcon, QRegion
 from PyQt5.QtCore import Qt, QRect
@@ -12,6 +12,7 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         super(MainWindow, self).__init__()
         QtWidgets.QMainWindow.__init__(self, parent)
         #Importando el archivo .css
+        child = ChildWindow(parent = self)
         with open("MainWindow.css") as f:
             self.setStyleSheet(f.read())
         self.setupUi(self)
@@ -21,6 +22,7 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         self.root_node.setPlaceholderText("Nodo Origen")
         self.last_node.setPlaceholderText("Nodo Destino")
         self.load_file.clicked.connect(self.loadFile)
+        self.create_map.clicked.connect(lambda:child.show())
         self.setFocus()
 
     def loadFile(self):#Funcion para abrir la ventana de busqueda y cargar un archivo
