@@ -2,10 +2,10 @@
 
 import sys
 from ChildWindow import *
-from PyQt5 import QtCore, QtGui, uic, QtWidgets
-from PyQt5.QtGui import QIcon, QRegion
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtWidgets import QApplication, QPlainTextEdit, QGraphicsOpacityEffect, QFileDialog
+from PyQt5 import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 form_class = uic.loadUiType("MainWindow.ui")[0]
 
 class MainWindow(QtWidgets.QMainWindow, form_class):
@@ -24,7 +24,12 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         self.last_node.setPlaceholderText("Nodo Destino")
         self.load_file.clicked.connect(self.loadFile)
         self.create_map.clicked.connect(lambda:child.show())
+        self.create_table.clicked.connect(lambda: self.printPlainText)
         self.setFocus()
+
+   
+
+        
 
     def loadFile(self):#Funcion para abrir la ventana de busqueda y cargar un archivo
         options = QFileDialog.Options()
@@ -36,7 +41,12 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
             self.characters.setPlainText(content)
             self.content = content
             #print(self.content)
-            #print("-"*40)           
+            #print("-"*40)     
+
+    def printPlainText(self):
+        t = self.characters.toPlainText()
+        print(t)
+                      
 
 aplicacion = QApplication(sys.argv)
 ventana = MainWindow()

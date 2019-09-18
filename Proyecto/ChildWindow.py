@@ -9,7 +9,7 @@ from PyQt5.QtGui import QIcon, QPixmap
 G = nx.DiGraph()
 
 grafo = {"A":["C","B","D"],
-        "B":["C","E"]}
+        "B":["C","E","A"]}
 
 for vertex, edges in grafo.items():
     G.add_node("%s"%vertex)
@@ -18,7 +18,7 @@ for vertex, edges in grafo.items():
         G.add_edge("%s" %vertex,"%s"%edge,weight=15)
         #print("'%s' se conecta con '%s'"%(vertex,edge))
 
-nx.draw(G, with_labels=True, node_size = 4000, node_color = "darkgray", edge_weight = 300)
+nx.draw(G, with_labels=True, node_size = 4000, node_color = "darkgray", edge_size = 300, font_size = 20, font_weight = "bold")
 plt.savefig("image.png", dpi = 55)
 
 class ChildWindow(QtWidgets.QMainWindow):
