@@ -21,10 +21,10 @@ class Graph:
             elif x in v:
                 s[k]=None
 
-        return s.keys() 
+        return list(s.keys()) 
 
 
-g = Graph()
+"""g = Graph()
 
 g.add_vertex("A")
 g.add_vertex("B")
@@ -34,8 +34,8 @@ g.add_edge("A","C")
 g.add_edge("A","B")
 g.add_edge("A","E")
 g.add_edge("B","E")
-
+g.add_edge("C","A")
 x = 'A'
 
 print("The graph is: %s" % (g.graph))
-print("The vertices connected to '%s' are: %s" % (x,g.connectVertices(x)))
+print("The vertices connected to '%s' are: %s" % (x,g.connectVertices(x)))"""

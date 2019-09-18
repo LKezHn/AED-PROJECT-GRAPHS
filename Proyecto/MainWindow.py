@@ -11,24 +11,27 @@ form_class = uic.loadUiType("MainWindow.ui")[0]
 class MainWindow(QtWidgets.QMainWindow, form_class):
     def __init__(self,parent=None):
         super(MainWindow, self).__init__()
-        QtWidgets.QMainWindow.__init__(self, parent)
+        QtWidgets.QMainWindow.__init__(self)
         #Importando el archivo .css
-        child = ChildWindow(parent = self)
         with open("MainWindow.css") as f:
             self.setStyleSheet(f.read())
         self.setupUi(self)
-        self.content = ""
-        #Lo que va a aparecer en cada QPlianText cuando esté vacío
+        #Lo que va a aparecer en cada QPlainText cuando esté vacío
+        self.text = ""
         self.characters.setPlaceholderText("Ingrese vértices, aristas y caracteristicas")
         self.root_node.setPlaceholderText("Nodo Origen")
         self.last_node.setPlaceholderText("Nodo Destino")
         self.load_file.clicked.connect(self.loadFile)
-        self.create_map.clicked.connect(lambda:child.show())
-        self.create_table.clicked.connect(lambda: self.printPlainText)
+        self.create_map.clicked.connect(self.passToOpen)
         self.setFocus()
 
+    def passToOpen(self):#Funcion para pasar el texto ingresado a openChild
+        self.openChild(self.printPlainText())
    
-
+    def openChild(self,text):#Funcion que abre la childwindow y envia el texto ingresado
+        self.text = text
+        self.child = ChildWindow(parent = self)
+        self.child.show()
         
 
     def loadFile(self):#Funcion para abrir la ventana de busqueda y cargar un archivo
@@ -39,13 +42,11 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
             f = open(fileName,"r")
             content = f.read()
             self.characters.setPlainText(content)
-            self.content = content
-            #print(self.content)
-            #print("-"*40)     
+            self.content = content     
 
     def printPlainText(self):
         t = self.characters.toPlainText()
-        print(t)
+        return t
                       
 
 aplicacion = QApplication(sys.argv)

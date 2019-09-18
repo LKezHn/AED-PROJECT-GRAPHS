@@ -3,8 +3,10 @@ import os
 import networkx as nx 
 import matplotlib.pyplot as plt
 from PyQt5 import QtCore, QtGui, uic, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPlainTextEdit
 from PyQt5.QtGui import QIcon, QPixmap
+from Graph import *
+
 
 G = nx.DiGraph()
 
@@ -25,14 +27,28 @@ class ChildWindow(QtWidgets.QMainWindow):
     def __init__(self,parent=None):
         QtWidgets.QMainWindow.__init__(self)
         uic.loadUi("ChildWindow.ui",self)
+        self.parent = parent
         self.setWindowTitle("Mapa")
+        self.printText()
         self.setFocus()
+        self.drawGraph()
         self.showGraph()
+        
+        #print(char)
+        
         os.remove("image.png")#Elimina la imagen al cerrar la ventana
         
+    def printText(self):#Probando si se envia el contenido del QPlainText
+        c = self.parent.text
+        print(c)
+
+    def drawGraph(self):
+        pass#print(content)    
+
     def showGraph(self): #Funcion para que aparezca la imagen en la ventana
         label = QLabel(self)
         pixmap = QPixmap('image.png')#.scaled(390,320)
         label.resize(pixmap.width(),pixmap.height())       
         label.setPixmap(pixmap)
         self.resize(pixmap.width(),pixmap.height())
+        
