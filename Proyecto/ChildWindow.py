@@ -8,7 +8,7 @@ from PyQt5.QtGui import QIcon, QPixmap
 G = nx.DiGraph()
 
 grafo = {"A":["C","B","D"],
-        "B":["C","E"]}
+        "B":["C","E","A"]}
 
 for vertex, edges in grafo.items():
     G.add_node("%s"%vertex)
