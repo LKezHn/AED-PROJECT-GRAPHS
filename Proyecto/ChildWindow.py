@@ -27,7 +27,6 @@ class ChildWindow(QtWidgets.QMainWindow):
     def __init__(self,parent=None):
         QtWidgets.QMainWindow.__init__(self)
         uic.loadUi("ChildWindow.ui",self)
-<<<<<<< HEAD
         self.setWindowTitle("Mapa")
 =======
         self.parent = parent
