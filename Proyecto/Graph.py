@@ -1,5 +1,4 @@
 class Graph:
-
     def __init__(self):
         self.graph = {}
 
@@ -7,8 +6,9 @@ class Graph:
         self.graph["%s" % (vertex_name)] = []
 
     def add_edge(self,vertex_origin,vertex_destination):
+        dic = {vertex_destination : None}#Creo el diccionario donde estara la arista
         if not (vertex_destination in self.graph["%s" % (vertex_origin)]):
-            self.graph["%s" % (vertex_origin)].append(vertex_destination)
+            self.graph["%s" % (vertex_origin)].append(dic)#Agrego ese diccionario como arista
 
     def connectVertices(self,x):
 
@@ -24,6 +24,7 @@ class Graph:
         return list(s.keys()) 
 
     def convert(self,content):
+        self.graph.clear()
         parent = "" 
         for row in content:
             if(row.find("\t") == -1):#Si no tiene tabulado
