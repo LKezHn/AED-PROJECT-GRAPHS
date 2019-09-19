@@ -1,7 +1,11 @@
-hola
-    adios
-    bye
-        hey
-    hola
-hotra
-    qwerty
+A:
+	B,
+	C
+	
+B:
+	A,
+	C
+
+C:
+	A,
+	B

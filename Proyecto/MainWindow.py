@@ -17,20 +17,21 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
             self.setStyleSheet(f.read())
         self.setupUi(self)
         #Lo que va a aparecer en cada QPlainText cuando esté vacío
-        self.text = ""
+        self.array = ""
         self.characters.setPlaceholderText("Ingrese vértices, aristas y caracteristicas")
         self.root_node.setPlaceholderText("Nodo Origen")
         self.last_node.setPlaceholderText("Nodo Destino")
         self.load_file.clicked.connect(self.loadFile)
         self.create_map.clicked.connect(self.passToOpen)
+        #self.converter()
         self.setFocus()
 
     def passToOpen(self):#Funcion para pasar el texto ingresado a openChild
         self.openChild(self.printPlainText())
    
     def openChild(self,text):#Funcion que abre la childwindow y envia el texto ingresado
-        self.text = text
-        self.child = ChildWindow(parent = self)
+        self.array = text
+        self.child = ChildWindow(parent = self)#Instancia de la ChildWindow pasando el self de la MainWindow como parametro
         self.child.show()
         
 
@@ -46,11 +47,14 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
 
     def printPlainText(self):
         t = self.characters.toPlainText()
-        return t
-                      
+        t = t.replace("\n"," ")#Quito los saltos de linea
+        list_content = t.split(" ")#Quito los espacios y convierto el texto en lista
+        return list_content
+
+                                             
 
 aplicacion = QApplication(sys.argv)
 ventana = MainWindow()
 ventana.show()
     
-sys.exit(aplicacion.exec_())        
+sys.exit(aplicacion.exec_())         
