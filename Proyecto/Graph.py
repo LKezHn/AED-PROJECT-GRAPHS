@@ -24,6 +24,7 @@ class Graph:
         return list(s.keys()) 
 
     def convert(self,content):
+        self.graph.clear()
         parent = "" 
         for row in content:
             if(row.find("\t") == -1):#Si no tiene tabulado

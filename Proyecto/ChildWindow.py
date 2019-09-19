@@ -17,14 +17,15 @@ class ChildWindow(QtWidgets.QMainWindow):
         self.setWindowTitle("Mapa")
         self.setFocus()
         self.createGraph()
-        self.showGraph()
+        
         
         #print(char)
         
-        os.remove("image.png")#Elimina la imagen al cerrar la ventana
+        #os.remove("image.png")#Elimina la imagen al cerrar la ventana
         
     def createGraph(self):
         G = Graph()#Creo una instancia de grafo para poder enviar la informacion del qplaintext e ingresarla
+        #G.graph.clear()
         graph = G.convert(self.parent.array)
         self.printGraph(graph)#Llamo a la funcion que crea la imagen del grafo
 
@@ -38,7 +39,10 @@ class ChildWindow(QtWidgets.QMainWindow):
                 #print("'%s' se conecta con '%s'"%(vertex,edge))
         nx.draw(D, with_labels=True, node_size = 4000, node_color = "darkgray", edge_size = 300, font_size = 20, font_weight = "bold")
         plt.savefig("image.png", dpi = 55)
-        
+        plt.clf()#Para que al agregar nueva info se borre el grafo anterior
+        self.showGraph()
+        os.remove("image.png")
+        #D.remove_nodes_from(grafo)
 
     def showGraph(self): #Funcion para que aparezca la imagen en la ventana
         label = QLabel(self)
