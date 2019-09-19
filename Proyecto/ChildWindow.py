@@ -8,20 +8,6 @@ from PyQt5.QtGui import QIcon, QPixmap
 from Graph import *
 
 
-G = nx.DiGraph()
-
-grafo = {"A":["C","B","D"],
-        "B":["C","E","A"]}
-
-for vertex, edges in grafo.items():
-    G.add_node("%s"%vertex)
-    for edge in edges:
-        G.add_node("%s"%edge)
-        G.add_edge("%s" %vertex,"%s"%edge,weight=15)
-        #print("'%s' se conecta con '%s'"%(vertex,edge))
-
-nx.draw(G, with_labels=True, node_size = 4000, node_color = "darkgray", edge_size = 300, font_size = 20, font_weight = "bold")
-plt.savefig("image.png", dpi = 55)
 
 class ChildWindow(QtWidgets.QMainWindow):
     def __init__(self,parent=None):
@@ -29,21 +15,30 @@ class ChildWindow(QtWidgets.QMainWindow):
         uic.loadUi("ChildWindow.ui",self)
         self.parent = parent
         self.setWindowTitle("Mapa")
-        self.printText()
         self.setFocus()
-        self.drawGraph()
+        self.createGraph()
         self.showGraph()
         
         #print(char)
         
         os.remove("image.png")#Elimina la imagen al cerrar la ventana
         
-    def printText(self):#Probando si se envia el contenido del QPlainText
-        c = self.parent.text
-        print(c)
+    def createGraph(self):
+        G = Graph()#Creo una instancia de grafo para poder enviar la informacion del qplaintext e ingresarla
+        graph = G.convert(self.parent.array)
+        self.printGraph(graph)#Llamo a la funcion que crea la imagen del grafo
 
-    def drawGraph(self):
-        pass#print(content)    
+    def printGraph(self,grafo):
+        D = nx.DiGraph()
+        for vertex, edges in grafo.items():
+            D.add_node("%s"%vertex)
+            for edge in edges:
+                D.add_node("%s"%edge)
+                D.add_edge("%s" %vertex,"%s"%edge,weight=15)
+                #print("'%s' se conecta con '%s'"%(vertex,edge))
+        nx.draw(D, with_labels=True, node_size = 4000, node_color = "darkgray", edge_size = 300, font_size = 20, font_weight = "bold")
+        plt.savefig("image.png", dpi = 55)
+        
 
     def showGraph(self): #Funcion para que aparezca la imagen en la ventana
         label = QLabel(self)
