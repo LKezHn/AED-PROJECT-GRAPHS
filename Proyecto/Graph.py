@@ -37,16 +37,16 @@ class Graph:
                 parent = row #Es el padre donde se añadiran las aristas
             else:
                 if(row.count("\t") == 1):
-                    d.clear()#Limpio el diccionario de caracteristicas para que no las agregue en otro vertice
+                    features_edges.clear()#Limpio el diccionario de caracteristicas para que no las agregue en otro vertice
                     row = row.replace("\t","")#Quito el tab    
-                    row = row.replace(",","")#Quito las comas(por si tiene)
+                    row = row.replace(":","")#Quito las comas(por si tiene)
                     edge_name = row #Guardo el nombre del vertice arista
                     edge_parent = self.add_edge("%s"%parent,"%s"%row)#Lo agrego como nodo arista del parent actual
                 else:
                     row = row.replace("\t","")
                     row = row.split(":")
                     edge_parent["%s"%edge_name] = {}#Convierto el nodo arista en diccionario
-                    feature_edges[row[0]] = row[1] #Guardo la caracteristica actual
+                    features_edges["%s"%row[0]] = "%s"%row[1] #Guardo la caracteristica actual
                     edge_parent["%s"%edge_name].update(features_edges)#Agrego el diccionario de caracteristicas al vertice arista
         print(self.graph)
         return self.graph # Retorno el grafo
