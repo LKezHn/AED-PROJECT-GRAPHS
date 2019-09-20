@@ -31,7 +31,9 @@ class ChildWindow(QtWidgets.QMainWindow):
                 D.add_node("%s"%"".join(edge))
                 D.add_edge("%s" %vertex,"%s"%"".join(edge),weight=15)
                 #print("'%s' se conecta con '%s'"%(vertex,edge))
-        nx.draw(D, with_labels=True, node_size = 4000, node_color = "darkgray", edge_weigth = "bold", font_size = 20, font_weight = "bold")#Dibuja el grafo
+                #print(pos)
+    
+        nx.draw(D, with_labels=True, node_size = 4000, arrowsize = 20, node_color = "darkgray", width = 3.0 , font_size = 20, font_weight = "bold")#Dibuja el grafo
         plt.savefig("image.png", dpi = 55)#Guarda el dibujo del grafo
         plt.clf()#Para que al agregar nueva info se borre el grafo anterior y no aparezca repetido en la ventana
         self.showGraph()
