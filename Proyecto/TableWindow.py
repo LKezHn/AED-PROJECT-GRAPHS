@@ -11,7 +11,11 @@ class Ui_Form(object):
         self.table.setGeometry(QtCore.QRect(0, 0, 391, 321))
         self.table.setObjectName("table")
         self.table.setReadOnly(True)
-        #self.table.insertPlainText("self.printSomething")
+        x="A"
+        y="B"
+        self.table.insertPlainText("-----------------------------------\n")
+        self.table.insertPlainText("Las rutas de '%s' a %s son:" % (x,y))
+        self.table.insertPlainText("\n-----------------------------------")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
