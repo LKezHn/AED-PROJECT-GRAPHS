@@ -8,20 +8,6 @@ from PyQt5.QtGui import QIcon, QPixmap
 from Graph import *
 
 
-G = nx.DiGraph()
-
-grafo = {"A":["C","B","D"],
-        "B":["C","E","A"]}
-
-for vertex, edges in grafo.items():
-    G.add_node("%s"%vertex)
-    for edge in edges:
-        G.add_node("%s"%edge)
-        G.add_edge("%s" %vertex,"%s"%edge,weight=15)
-        #print("'%s' se conecta con '%s'"%(vertex,edge))
-
-nx.draw(G, with_labels=True, node_size = 4000, node_color = "darkgray", edge_size = 300, font_size = 20, font_weight = "bold")
-plt.savefig("image.png", dpi = 55)
 
 class ChildWindow(QtWidgets.QMainWindow):
     def __init__(self,parent=None):
@@ -32,6 +18,7 @@ class ChildWindow(QtWidgets.QMainWindow):
 =======
         self.parent = parent
         self.setWindowTitle("Mapa")
+<<<<<<< HEAD
         self.printText()
 >>>>>>> 83c73689e0a1461c6d325d3a3da0b0c762a20c43
         self.setFocus()
@@ -51,11 +38,34 @@ class ChildWindow(QtWidgets.QMainWindow):
 
     def drawGraph(self):
         pass#print(content)    
+=======
+        self.setFocus()
+        self.createGraph()
+        
+    def createGraph(self):
+        G = Graph()#Creo una instancia de grafo para poder enviar la informacion del qplaintext e ingresarla
+        graph = G.convert(self.parent.array)
+        self.printGraph(graph)#Llamo a la funcion que crea la imagen del grafo
+
+    def printGraph(self,graph):
+        D = nx.DiGraph()
+        for vertex, edges in graph.items():
+            D.add_node("%s"%vertex)
+            for edge in edges:
+                D.add_node("%s"%"".join(edge))
+                D.add_edge("%s" %vertex,"%s"%"".join(edge),weight=15)
+                #print("'%s' se conecta con '%s'"%(vertex,edge))
+        nx.draw(D, with_labels=True, node_size = 4000, node_color = "darkgray", edge_weigth = "bold", font_size = 20, font_weight = "bold")#Dibuja el grafo
+        plt.savefig("image.png", dpi = 55)#Guarda el dibujo del grafo
+        plt.clf()#Para que al agregar nueva info se borre el grafo anterior y no aparezca repetido en la ventana
+        self.showGraph()
+        os.remove("image.png")#Para que no se cree el archivo en la carpeta del proyecto
+>>>>>>> 82a2eadd805ef9b0e240dd356858c95f11e79bc8
 
 >>>>>>> 83c73689e0a1461c6d325d3a3da0b0c762a20c43
     def showGraph(self): #Funcion para que aparezca la imagen en la ventana
         label = QLabel(self)
-        pixmap = QPixmap('image.png')#.scaled(390,320)
+        pixmap = QPixmap('image.png')
         label.resize(pixmap.width(),pixmap.height())       
         label.setPixmap(pixmap)
         self.resize(pixmap.width(),pixmap.height())
