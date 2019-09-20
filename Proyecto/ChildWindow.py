@@ -15,9 +15,34 @@ class ChildWindow(QtWidgets.QMainWindow):
         uic.loadUi("ChildWindow.ui",self)
         self.parent = parent
         self.setWindowTitle("Mapa")
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        self.printText()
+>>>>>>> 83c73689e0a1461c6d325d3a3da0b0c762a20c43
+>>>>>>> LKezHn-feature-GraphTest
         self.setFocus()
         self.createGraph()
         
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        #print(char)
+        
+        os.remove("image.png")#Elimina la imagen al cerrar la ventana
+        
+    def printText(self):#Probando si se envia el contenido del QPlainText
+        c = self.parent.text
+        print(c)
+
+    def drawGraph(self):
+        pass#print(content)    
+=======
+        self.setFocus()
+        self.createGraph()
+        
+>>>>>>> LKezHn-feature-GraphTest
     def createGraph(self):
         G = Graph()#Creo una instancia de grafo para poder enviar la informacion del qplaintext e ingresarla
         graph = G.convert(self.parent.array)
@@ -36,6 +61,10 @@ class ChildWindow(QtWidgets.QMainWindow):
         plt.clf()#Para que al agregar nueva info se borre el grafo anterior y no aparezca repetido en la ventana
         self.showGraph()
         os.remove("image.png")#Para que no se cree el archivo en la carpeta del proyecto
+<<<<<<< HEAD
+=======
+>>>>>>> 82a2eadd805ef9b0e240dd356858c95f11e79bc8
+>>>>>>> LKezHn-feature-GraphTest
 
     def showGraph(self): #Funcion para que aparezca la imagen en la ventana
         label = QLabel(self)

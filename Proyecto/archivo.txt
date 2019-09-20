@@ -1,5 +1,14 @@
 A:
+<<<<<<< HEAD
 	B
 B:
 	C
 C:
+=======
+	B,
+	C,
+	D,
+C:
+	H,
+	F,
+>>>>>>> LKezHn-feature-GraphTest

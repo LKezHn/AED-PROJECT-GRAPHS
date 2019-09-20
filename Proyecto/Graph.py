@@ -9,6 +9,10 @@ class Graph:
         dic = {vertex_destination : None}#Creo el diccionario donde estara la arista
         if not (vertex_destination in self.graph["%s" % (vertex_origin)]):
             self.graph["%s" % (vertex_origin)].append(dic)#Agrego ese diccionario como arista
+<<<<<<< HEAD
+=======
+        return dic
+>>>>>>> LKezHn-feature-GraphTest
 
     def connectVertices(self,x):
 
@@ -25,13 +29,21 @@ class Graph:
 
     def convert(self,content):
         self.graph.clear()
+<<<<<<< HEAD
         parent = "" 
+=======
+        parent = ""
+        edge_name = ""
+        edge_parent = None 
+        features_edges = {}
+>>>>>>> LKezHn-feature-GraphTest
         for row in content:
             if(row.find("\t") == -1):#Si no tiene tabulado
                 row = row.replace(":","")#Quita los dos puntos y lo agrega
                 self.add_vertex("%s"%row)
                 parent = row #Es el padre donde se añadiran las aristas
             else:
+<<<<<<< HEAD
                 row = row.replace("\t","")#Quito el tab    
                 row = row.replace(",","")#Quito las comas(por si tiene)
                 self.add_edge("%s"%parent,"%s"%row)#Lo agrego como nodo arista del parent actual
@@ -49,6 +61,37 @@ if(content[-1] == ""):
 g = Graph()
 #g.convert(content)
 #print(g.graph)
+=======
+                if(row.count("\t") == 1):
+                    d.clear()#Limpio el diccionario de caracteristicas para que no las agregue en otro vertice
+                    row = row.replace("\t","")#Quito el tab    
+                    row = row.replace(",","")#Quito las comas(por si tiene)
+                    edge_name = row #Guardo el nombre del vertice arista
+                    edge_parent = self.add_edge("%s"%parent,"%s"%row)#Lo agrego como nodo arista del parent actual
+                else:
+                    row = row.replace("\t","")
+                    row = row.split(":")
+                    edge_parent["%s"%edge_name] = {}#Convierto el nodo arista en diccionario
+                    feature_edges[row[0]] = row[1] #Guardo la caracteristica actual
+                    edge_parent["%s"%edge_name].update(features_edges)#Agrego el diccionario de caracteristicas al vertice arista
+        print(self.graph)
+        return self.graph # Retorno el grafo
+
+    
+    
+"""
+filename = "archivo.txt"
+d = open(filename,"r")
+content = d.read()
+content = content.split("\n")
+if(content[-1] == ""):
+    content.pop()
+
+g = Graph()
+#g.convert(content)
+#print(g.graph)
+
+>>>>>>> LKezHn-feature-GraphTest
 g.add_vertex("A")
 g.add_vertex("B")
 g.add_vertex("C")
