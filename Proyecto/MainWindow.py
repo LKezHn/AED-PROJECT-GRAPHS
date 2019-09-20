@@ -24,10 +24,7 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         self.last_node.setPlaceholderText("Nodo Destino")
         self.load_file.clicked.connect(self.loadFile)
         self.create_map.clicked.connect(self.passToOpen)
-<<<<<<< HEAD
         self.create_table.clicked.connect(self.tableWindow)
-=======
->>>>>>> LKezHn-feature-GraphTest
         #self.converter()
         self.setFocus()
 
@@ -56,16 +53,13 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         list_content = t.split(" ")#Quito los espacios y convierto el texto en lista
         return list_content
 
-<<<<<<< HEAD
-    def tableWindow(self):
+    def tableWindow(self):  #funcion que despliega la ventana emergente del TableWindow.py
         table = QtWidgets.QPlainTextEdit()
-        ui = Ui_Form()
+        ui = Ui_Form() #instancia de la tableWindow
         ui.setupUi(table)
         table.show()
         table.exec_()   
 
-=======
->>>>>>> LKezHn-feature-GraphTest
                                              
 
 aplicacion = QApplication(sys.argv)
