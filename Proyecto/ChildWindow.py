@@ -43,4 +43,3 @@ class ChildWindow(QtWidgets.QMainWindow):
         label.resize(pixmap.width(),pixmap.height())       
         label.setPixmap(pixmap)
         self.resize(pixmap.width(),pixmap.height())
-        

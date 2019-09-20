@@ -60,11 +60,9 @@ content = d.read()
 content = content.split("\n")
 if(content[-1] == ""):
     content.pop()
-
 g = Graph()
 #g.convert(content)
 #print(g.graph)
-
 g.add_vertex("A")
 g.add_vertex("B")
 g.add_vertex("C")
