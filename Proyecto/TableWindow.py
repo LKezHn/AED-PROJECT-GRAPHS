@@ -11,7 +11,7 @@ class Ui_Form(object):
         self.table.setGeometry(QtCore.QRect(0, 0, 391, 321))
         self.table.setObjectName("table")
         self.table.setReadOnly(True)
-        self.table.insertPlainText("self.printSomething")
+        #self.table.insertPlainText("self.printSomething")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
