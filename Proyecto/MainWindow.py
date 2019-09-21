@@ -27,7 +27,7 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         self.create_table.clicked.connect(self.openTable)
         #self.converter()
         self.setFocus()
-
+    
     def passToOpen(self):#Funcion para pasar el texto ingresado a openChild
         self.openChild(self.printPlainText())
    

@@ -1,14 +1,17 @@
 class Graph:
     def __init__(self):
         self.graph = {}
+        self.toRoad = {}
 
     def add_vertex(self,vertex_name):
         self.graph["%s" % (vertex_name)] = []
+        self.toRoad["%s"%vertex_name] = set()
 
     def add_edge(self,vertex_origin,vertex_destination):
         dic = {vertex_destination : None}#Creo el diccionario donde estara la arista
         if not (vertex_destination in self.graph["%s" % (vertex_origin)]):
             self.graph["%s" % (vertex_origin)].append(dic)#Agrego ese diccionario como arista
+            self.toRoad["%s"%vertex_origin].add(vertex_destination)
         return dic
 
     def connectVertices(self,x):
@@ -52,8 +55,24 @@ class Graph:
         return self.graph # Retorno el grafo
 
     
-    
-"""
+# Print paths
+"""    
+g = Graph()
+g.add_vertex("A")
+g.add_vertex("B")
+g.add_vertex("C")
+g.add_vertex("D")
+g.add_edge("A","C")
+g.add_edge("A","B")
+g.add_edge("A","E")
+g.add_edge("B","E")
+g.add_edge("C","A")
+print(g.graph)
+print(g.toRoad)
+#roads = list(g.dfs_paths(g.toRoad, 'A', 'B'))
+#print("Caminos de A a C: %s"%roads)
+
+
 filename = "archivo.txt"
 d = open(filename,"r")
 content = d.read()
