@@ -1,26 +1,46 @@
 A:
 	B:
-		distancia:1
-		anchoDeBanda:1
-		usuariosConectados:1
-		cantidadDeTrafico:1
+		distancia:1450
+		anchoDeBanda:329
+		usuariosConectados:125
+		cantidadDeTrafico:450
 		tipoDeMedio:CAT5
 	C:
-		distancia:1
-		anchoDeBanda:1
-		usuariosConectados:1
-		cantidadDeTrafico:1
+		distancia:2300
+		anchoDeBanda:215
+		usuariosConectados:243
+		cantidadDeTrafico:654
 		tipoDeMedio:CAT6
 	D:
-		distancia:1
-		anchoDeBanda:1
-		usuariosConectados:1
-		cantidadDeTrafico:1
+		distancia:1345
+		anchoDeBanda:234
+		usuariosConectados:46
+		cantidadDeTrafico:123
 		tipoDeMedio:Fibra-Optica
 C:
 	A:
-		distancia:1
-		anchoDeBanda:1
-		usuariosConectados:1
-		cantidadDeTrafico:1
+		distancia:2300
+		anchoDeBanda:215
+		usuariosConectados:243
+		cantidadDeTrafico:654
+		tipoDeMedio:CAT6
+B:
+	A:
+		distancia:1450
+		anchoDeBanda:329
+		usuariosConectados:125
+		cantidadDeTrafico:450
+		tipoDeMedio:CAT5
+	C:
+		distancia:1234
+		anchoDeBanda:435
+		usuariosConectados:765
+		cantidadDeTrafico:965
 		tipoDeMedio:WIFI
+D:
+	A:
+		distancia:1345
+		anchoDeBanda:234
+		usuariosConectados:46
+		cantidadDeTrafico:123
+		tipoDeMedio:Fibra-Optica

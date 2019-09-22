@@ -20,6 +20,7 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         #Lo que va a aparecer en cada QPlainText cuando esté vacío
         self.array = ""
         self.roads = ""
+        self.edge_labels = {}
         self.characters.setPlaceholderText("Ingrese vértices, aristas y caracteristicas")
         self.root_node.setPlaceholderText("Nodo Origen")
         self.last_node.setPlaceholderText("Nodo Destino")
@@ -76,20 +77,17 @@ class Warning(QDialog):
             self.setStyleSheet(f.read())
         layout = QVBoxLayout()#Creo un layout
         label = QLabel() #Creo el label
-        if(key == 1):
-            self.setFixedSize(440, 70)
-            label.setText("Debe rellenar todos los espacios con la informacion necesaria")#TExto del label
-        else:
-            self.setFixedSize(237, 70)
-            label.setText("Debe generar el mapa primero")
+        self.setFixedSize(440, 70)
+        label.setText("Debe rellenar todos los espacios con la informacion necesaria")#TExto del label
         label.setAlignment(Qt.AlignAbsolute)
         layout.addWidget(label)#Agrego el label al layout
         self.setLayout(layout)#Para que se muestre en pantalla
         button = QPushButton("Aceptar",self)
         button.clicked.connect(self.ok)
-        if(key == 1):
-            button.move(172,33)
-        else:
+        button.move(172,33)
+        if(key == 2):#Si la key es igual a 2 modifico la ventana y el mensaje que aparece
+            self.setFixedSize(237, 70)
+            label.setText("Debe generar el mapa primero")
             button.move(67,33)
 
     def ok(self):
