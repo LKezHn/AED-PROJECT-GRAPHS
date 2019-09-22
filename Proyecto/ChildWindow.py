@@ -23,8 +23,8 @@ class ChildWindow(QtWidgets.QMainWindow):
         graph = G.convert(self.parent.array)
         a = self.parent.root_node.toPlainText()
         b = self.parent.last_node.toPlainText()
-        print("Caminos de %s a %s: %s"%(a,b,list(self.dfs_paths(G.toRoad,a,b))))
         self.printGraph(graph)#Llamo a la funcion que crea la imagen del grafo
+        return list(self.dfs_paths(G.toRoad,a,b))
 
     def printGraph(self,graph):
         D = nx.DiGraph()
@@ -33,7 +33,7 @@ class ChildWindow(QtWidgets.QMainWindow):
             for edge in edges:
                 D.add_node("%s"%"".join(edge))
                 D.add_edge("%s" %vertex,"%s"%"".join(edge))
-                D.add_edge("%s"%"".join(edge),"%s"%vertex)
+                #D.add_edge("%s"%"".join(edge),"%s"%vertex)
                 #print("'%s' se conecta con '%s'"%(vertex,edge))
                 #print(pos)
         pos = nx.drawing.layout.shell_layout(D)
