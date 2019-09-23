@@ -87,7 +87,7 @@ class ChildWindow(QtWidgets.QMainWindow):
         weightlossForTraffic = int(traffic) * 0.0002 * weight
         weightlossForUsers = int(connectUsers) * 0.0002 * weight
         netWeight = (weight - weightlossForTraffic - weightlossForUsers) * conf
-        return round(netWeight,2)
+        return round(netWeight*100,1)
         
     def findMediaValue(self,mediaType):
         mediaValue = 0
@@ -111,32 +111,38 @@ class ChildWindow(QtWidgets.QMainWindow):
             confiability = 0.98
             decrease = 0.02
             if(distance >= "50"):
-                confiability = confiability - (int(distance) * decrease)
+                decrease = int(distance)//50*0.02
+                confiability = confiability - decrease
         elif(mediaType == "CAT6"):
             confiability = 0.98
             decrease = 0.01
             if(distance >= "50"):
-                confiability = confiability - (int(distance) * decrease)
+                decrease = int(distance)//50*0.01
+                confiability = confiability - decrease#(int(distance) * decrease)
         elif(mediaType == "Fibra-Óptica" or mediaType == "Fibra-Optica"):
             confiability = 0.90
             decrease = 0.05
             if(distance >= "100"):
-                confiability = confiability - (int(distance) * decrease)
+                decrease = int(distance)//100*0.05
+                confiability = confiability - decrease
         elif(mediaType == "WIFI"):
             confiability = 0.7
             decrease = 0.6
             if(distance >= "6"):
-                confiability = confiability - (int(distance) * decrease)
+                decrease = int(distance)//6*0.6
+                confiability = confiability - decrease
         elif(mediaType == "Coaxial"):
             confiability = 1
             decrease = 0.04
             if(distance >= "100"):
-                confiability = confiability - (int(distance) * decrease)
+                decrease = int(distance)//100*0.04
+                confiability = confiability - decrease
         elif(mediaType == "Par-Trenzado"):
             confiability = 1
             decrease = 0.01
             if(distance >= "100"):
-                confiability = confiability - (int(distance) * decrease)
+                decrease = int(distance)//100*0.01
+                confiability = confiability - decrease
         return confiability
 
 """    def dfs_paths(self,graph, start, goal):
