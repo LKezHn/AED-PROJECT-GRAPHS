@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>390</width>
+    <height>342</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPlainTextEdit" name="plainTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>371</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="plainText">
+     <string>Instrucciones:
+1. Escriba sin tabulacion el nombre del vertice seguido de dos puntos.
+2. Precedido de una tabulacion, escriba el nombre de los vertices aristas seguido de dos puntos.
+3. Precedido de dos tabulaciones escriba las caracteristicas que existe entre el vertice y el nodo arista antes mencionado, las caracteristicas deben ingresarse de la siguiente forma:
+
+  nombreCaracteristica:valorDeLaCaracteristica.
+
+No debe dejar saltos de linea entre nodos.
+
+NOTA: Para poder ver la tabla de rutas primero debe crear el mapa.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ok">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>310</y>
+      <width>111</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Aceptar</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

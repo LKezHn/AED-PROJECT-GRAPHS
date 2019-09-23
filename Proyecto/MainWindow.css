@@ -10,6 +10,10 @@ QPushButton{
     padding: 0px 3px 0px 3px;
 }
 
+QLabelClickable{
+    color: blue;
+}
+
 QPushButton:focus{
     outline: none;
 }

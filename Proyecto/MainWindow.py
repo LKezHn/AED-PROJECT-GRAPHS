@@ -7,6 +7,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from TableWindow import *
+from Instructions import *
 form_class = uic.loadUiType("MainWindow.ui")[0]
 
 class MainWindow(QtWidgets.QMainWindow, form_class):
@@ -14,9 +15,14 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         super(MainWindow, self).__init__()
         QtWidgets.QMainWindow.__init__(self)
         #Importando el archivo .css
+        instructions = Instructions()
         with open("MainWindow.css") as f:
             self.setStyleSheet(f.read())
         self.setupUi(self)
+        self.setWindowIcon(QIcon("logo.png"))
+        self.instructions = QLabelClickable("Instrucciones...")
+        self.instructions.clicked.connect(lambda:instructions.show())
+        self.layout.addWidget(self.instructions)
         #Lo que va a aparecer en cada QPlainText cuando esté vacío
         self.array = ""
         self.roads = ""
@@ -30,6 +36,7 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         #self.converter()
         self.setFocus()
     
+
     def passToOpen(self):#Funcion para pasar el texto ingresado a openChild
         if(self.printPlainText() == "" or self.root_node.toPlainText() == "" or self.last_node.toPlainText() == ""):
             warning = Warning(1,parent = self).exec_()#print("hello")
@@ -92,6 +99,16 @@ class Warning(QDialog):
 
     def ok(self):
         self.close()
+
+class QLabelClickable(QLabel):
+    clicked = pyqtSignal()
+
+    def __init__(self,*args):
+        QLabel.__init__(self,*args)
+
+    def mouseReleaseEvent(self, ev):
+        self.clicked.emit()
+
 
 aplicacion = QApplication(sys.argv)
 ventana = MainWindow()
