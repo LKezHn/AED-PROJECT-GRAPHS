@@ -14,6 +14,16 @@ QLabelClickable{
     color: blue;
 }
 
+#instructions_text{
+    background-color: lightgray;
+    color: darkslategrey;
+    border: 1.5px solid darkslategrey;
+}
+
+#instWindow{
+    background-color: whitesmoke;
+}
+
 QPushButton:focus{
     outline: none;
 }

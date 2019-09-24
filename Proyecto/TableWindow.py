@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
-
+from PyQt5.QtGui import *
 
 class TableWindow(QtWidgets.QWidget):
     def __init__(self,parent=None):
@@ -16,14 +16,18 @@ class TableWindow(QtWidgets.QWidget):
         self.showTable()
 
     def showTable(self):
-        self.table.setPlainText("-"*84)
-        self.table.appendPlainText("%sTabla de Rutas de %s a %s"%(" "*28,self.origin,self.end))
-        self.table.appendPlainText("-"*84)
-        self.table.appendPlainText("%sRuta%s|%sPeso"%(" "*30," "*15," "*15))
-        self.table.appendPlainText("-"*84)
+        self.table.setFont(QFont("monospace",8))
+        self.table.setPlainText("-"*57)
+        self.table.appendPlainText("%sTabla de Rutas de %s a %s"%(" "*17,self.origin,self.end))
+        self.table.appendPlainText("-"*57)
+        self.table.appendPlainText("\n\n")
+        self.table.appendPlainText("-"*57)
+        self.table.appendPlainText("|%sRuta%s|%sPeso%s|"%(" "*12," "*12," "*11," "*11))
+        self.table.appendPlainText("-"*57)
+        self.parent.roads.sort(key = lambda x:len(x),reverse = True)
         for i in range(len(self.parent.roads)):
-            self.table.appendPlainText("%s%s%s%s"%(" "*31,",".join(self.parent.roads[i])," "*31,self.totalWeigth(self.parent.roads[i])))
-            self.table.appendPlainText("-"*84)
+            self.table.appendPlainText('{3}{0:12s}{1:16s}{3}{0:11s}{2:.1f}{0:11s}{3}'.format(" ",",".join(self.parent.roads[i]),self.totalWeigth(self.parent.roads[i]), '|'))#"%s%s%s|%s%s"%(" "*18,," "*7," "*7,))
+            self.table.appendPlainText("-"*57)
 
     def totalWeigth(self,array):
         current = array[0]

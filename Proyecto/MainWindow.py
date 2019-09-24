@@ -27,7 +27,8 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         self.array = ""
         self.roads = ""
         self.edge_labels = {}
-        self.characters.setPlaceholderText("Ingrese vértices, aristas y caracteristicas")
+        self.characters.setTabStopWidth(self.characters.fontMetrics().width(" ")*10)
+        self.characters.setPlaceholderText("Ingrese vértices, aristas y caracteristicas.")
         self.root_node.setPlaceholderText("Nodo Origen")
         self.last_node.setPlaceholderText("Nodo Destino")
         self.load_file.clicked.connect(self.loadFile)

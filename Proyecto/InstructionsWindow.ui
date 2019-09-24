@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>mainWindow</class>
- <widget class="QMainWindow" name="mainWindow">
+ <class>instWindow</class>
+ <widget class="QMainWindow" name="instWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,7 +14,7 @@
    <string/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="plainTextEdit">
+   <widget class="QPlainTextEdit" name="instructions_text">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -27,14 +27,27 @@
      <bool>true</bool>
     </property>
     <property name="plainText">
-     <string>Instrucciones:
+     <string>Ejemplo de como debe ingresarse las caracteristicas:
+
+A:
+        B:
+               caracteristica1:valor1
+               caracteristica2:valor2
+B:
+        A:
+               caracteristica1:valor1
+               caracteristica2:valor2
+
+Instrucciones:
 1. Escriba sin tabulacion el nombre del vertice seguido de dos puntos.
 2. Precedido de una tabulacion, escriba el nombre de los vertices aristas seguido de dos puntos.
 3. Precedido de dos tabulaciones escriba las caracteristicas que existe entre el vertice y el nodo arista antes mencionado, las caracteristicas deben ingresarse de la siguiente forma:
 
   nombreCaracteristica:valorDeLaCaracteristica.
 
-No debe dejar saltos de linea entre nodos.
+La cantidad maxima de usuarios que pueden estar conectados es de 1000 asi como la distancia maxima entre nodos es de 1000 metros.
+
+No debe dejar saltos de linea entre nodos ni al final del archivo.
 
 NOTA: Para poder ver la tabla de rutas primero debe crear el mapa.</string>
     </property>
