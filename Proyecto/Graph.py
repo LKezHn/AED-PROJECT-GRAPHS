@@ -51,48 +51,6 @@ class Graph:
                     edge_parent["%s"%edge_name] = {}#Convierto el nodo arista en diccionario
                     features_edges["%s"%row[0]] = "%s"%row[1] #Guardo la caracteristica actual
                     edge_parent["%s"%edge_name].update(features_edges)#Agrego el diccionario de caracteristicas al vertice arista
-        print(self.graph)
         return self.graph # Retorno el grafo
 
     
-# Print paths
-"""    
-g = Graph()
-g.add_vertex("A")
-g.add_vertex("B")
-g.add_vertex("C")
-g.add_vertex("D")
-g.add_edge("A","C")
-g.add_edge("A","B")
-g.add_edge("A","E")
-g.add_edge("B","E")
-g.add_edge("C","A")
-print(g.graph)
-print(g.toRoad)
-#roads = list(g.dfs_paths(g.toRoad, 'A', 'B'))
-#print("Caminos de A a C: %s"%roads)
-
-
-filename = "archivo.txt"
-d = open(filename,"r")
-content = d.read()
-content = content.split("\n")
-if(content[-1] == ""):
-    content.pop()
-g = Graph()
-#g.convert(content)
-#print(g.graph)
-g.add_vertex("A")
-g.add_vertex("B")
-g.add_vertex("C")
-g.add_vertex("D")
-g.add_edge("A","C")
-g.add_edge("A","B")
-g.add_edge("A","E")
-g.add_edge("B","E")
-g.add_edge("C","A")
-x = 'A'
-print(list(g.dfs_paths("A","C")))
-#print(g.graph)
-#print("The graph is: %s" % (g.graph))
-#print("The vertices connected to '%s' are: %s" % (x,g.connectVertices(x)))"""

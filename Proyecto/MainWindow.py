@@ -34,7 +34,6 @@ class MainWindow(QtWidgets.QMainWindow, form_class):
         self.load_file.clicked.connect(self.loadFile)
         self.create_map.clicked.connect(self.passToOpen)
         self.create_table.clicked.connect(self.openTable)
-        #self.converter()
         self.setFocus()
     
 

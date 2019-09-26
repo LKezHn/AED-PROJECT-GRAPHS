@@ -33,9 +33,6 @@ class ChildWindow(QtWidgets.QMainWindow):
             for edge in edges:
                 D.add_node("%s"%"".join(edge))
                 D.add_edge("%s" %vertex,"%s"%"".join(edge))
-                #D.add_edge("%s"%"".join(edge),"%s"%vertex)
-                #print("'%s' se conecta con '%s'"%(vertex,edge))
-                #print(pos)
         pos = nx.drawing.layout.shell_layout(D)
         nx.draw(D,pos, with_labels=True, node_size = 4000, arrowsize = 20, node_color = "darkgray", width = 3.0 , font_size = 20, font_weight = "bold")#Dibuja el grafo
         nx.draw_networkx_edge_labels(D,pos,edge_labels=self.getFeatures(self.G.graph),font_color='darkblue', font_size = 20)
@@ -70,8 +67,6 @@ class ChildWindow(QtWidgets.QMainWindow):
                         for x,y in v[i].items():#Ingreso a los elementos de ese grafo
                             if(isinstance(y,dict)):#En este punto me encuentro en el grafo donde se encuentran las caracteristicas
                                 weigth = self.weightOf(y)
-                                #for a,b in y.items():
-                                #    print("%s: %s"%(a,b))
                             self.parent.edge_labels[(k,x)] = weigth
         return self.parent.edge_labels
                             
@@ -144,21 +139,3 @@ class ChildWindow(QtWidgets.QMainWindow):
                 decrease = int(distance)//100*0.01
                 confiability = confiability - decrease
         return confiability
-
-"""    def dfs_paths(self,graph, start, goal):
-        # Define stack variable
-        stack = [[start]]
-        # Do the process while there are paths to follow
-        while stack:
-            path = stack.pop()
-            node = path[-1]
-            for next in graph[node] - get(path):
-                # If a correct path is founded, then return the path with the generator
-                # else write a new path and follow iterating.
-                if next == goal:
-                    yield path + [next]
-                else:
-                    stack.append(path + [next])
-
-# Print paths
-#print list(dfs_paths(graph, 'A', 'F'))"""
