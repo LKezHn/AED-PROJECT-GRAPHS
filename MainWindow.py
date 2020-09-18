@@ -114,4 +114,4 @@ aplicacion = QApplication(sys.argv)
 ventana = MainWindow()
 ventana.show()
     
-sys.exit(aplicacion.exec_())         
+sys.exit(aplicacion.exec_())
